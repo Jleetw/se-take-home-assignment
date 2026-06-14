@@ -31,4 +31,9 @@ export class OrderQueue {
   getPending() {
     return [...this.vipQueue, ...this.normalQueue];
   }
+
+  clear() {
+    this.vipQueue = [];
+    this.normalQueue = [];
+  }
 }

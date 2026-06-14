@@ -97,6 +97,16 @@ export class BotWorker {
     }
   }
 
+  clearBots() {
+    this.activeJobs.forEach(timer => clearTimeout(timer));
+    this.activeJobs.clear();
+    this.bots = [];
+  }
+
+  clearCompletedOrders() {
+    this.completed = [];
+  }
+
   private toBotDTO(bot: Bot) {
     return {
       id: bot.id,

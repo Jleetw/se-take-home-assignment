@@ -106,6 +106,14 @@ export default function Home() {
         >
           - Bot
         </button>
+        <button
+          className={`${styles.button} `}
+          onClick={() =>
+            callApi("/api/reset/")
+          }
+        >
+          Reset Dashboard
+        </button>
       </div>
 
       <div className={styles.grid}>

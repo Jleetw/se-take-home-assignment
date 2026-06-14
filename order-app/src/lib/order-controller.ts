@@ -32,4 +32,12 @@ export const controller = {
   getState() {
     return worker.getState();
   },
+
+  resetSystem() {
+    queue.clear();
+    worker.clearBots();
+    worker.clearCompletedOrders();
+
+    orderId = 1;
+  }
 };
