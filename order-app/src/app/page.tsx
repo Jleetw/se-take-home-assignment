@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 
 export default function Home() {
   const [state, setState] = useState<any>({
+    instanceId: "",
     pending: [],
     completed: [],
     bots: [],
@@ -14,6 +15,14 @@ export default function Home() {
     const res = await fetch("/api/state");
     const data = await res.json();
     setState(data);
+    console.log(
+      "Instance:",
+      data.instanceId,
+      "Pending:",
+      data.pending.length,
+      "Completed:",
+      data.completed.length
+    );
   };
 
   const callApi = async (url: string, method = "POST") => {

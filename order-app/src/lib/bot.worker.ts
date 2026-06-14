@@ -5,7 +5,9 @@ export class BotWorker {
   private bots: Bot[] = [];
   private queue: OrderQueue;
   private completed: Order[] = [];
-
+  readonly instanceId = Math.random()
+      .toString(36)
+      .slice(2);
   private running = false;
 
   constructor(queue: OrderQueue) {
@@ -117,6 +119,7 @@ export class BotWorker {
 
   getState() {
     return {
+      instanceId: this.instanceId,
       pending: this.queue.getPending(),
       completed: this.completed,
       bots: this.bots.map(b => this.toBotDTO(b)),
