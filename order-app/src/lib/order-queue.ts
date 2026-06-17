@@ -21,10 +21,19 @@ export class OrderQueue {
   }
 
   requeue(order: Order) {
-    if (order.type === OrderType.VIP) {
-      this.vipQueue.unshift(order);
+    const queue = 
+      order.type === OrderType.VIP
+        ? this.vipQueue
+        : this.normalQueue;
+
+    const index = queue.findIndex(
+      o => o.id > order.id
+    );
+
+    if (index === -1) {
+      queue.push(order);
     } else {
-      this.normalQueue.unshift(order);
+      queue.splice(index, 0, order);
     }
   }
 
